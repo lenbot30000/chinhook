@@ -12,7 +12,7 @@ fetch('https://api.ipify.org?format=json')
       identifier: new URLSearchParams(window.location.search).get("id")
     };
 
-    fetch('https://script.google.com/macros/s/1x3Qr2xvMi5GWyD1h-5JytpmbBPYhDEKebBXmD0ovbOk/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwoXUaLR-qHnxMmtgYs-ChZtj4fQdnweCycgCvhjYU615cYx6f9L5zSdf40LS04MFJQ/exec', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
