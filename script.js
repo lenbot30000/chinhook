@@ -1,25 +1,20 @@
-// Example: Log user details
-window.onload = function() {
-  // Get User-Agent details
-  const userAgent = navigator.userAgent;
+fetch('https://api.ipify.org?format=json')
+  .then(res => res.json())
+  .then(data => {
+    const payload = {
+      userAgent: navigator.userAgent,
+      language: navigator.language,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      screenSize: screen.width + "x" + screen.height,
+      referrer: document.referrer,
+      page: window.location.href,
+      ip: data.ip,
+      identifier: new URLSearchParams(window.location.search).get("id")
+    };
 
-  // Get IP address (here you could fetch it from an external API)
-  // For demo purposes, we'll mock it
-  const userIP = "123.456.789.101"; // In production, use a free IP API
-
-  // Send this data somewhere (e.g., Google Analytics or your server)
-  console.log(`User Agent: ${userAgent}`);
-  console.log(`User IP: ${userIP}`);
-
-  // Optionally, send data to a server or logging service
-  fetch('https://your-server.com/log-data', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ userAgent, userIP, timestamp: new Date() }),
+    fetch('https://script.google.com/macros/s/YOUR_WEBAPP_ID/exec', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
   });
-
-  // Optional: Show user info
-  document.getElementById('pixel').innerHTML = `<p>User-Agent: ${userAgent}</p>`;
-}
