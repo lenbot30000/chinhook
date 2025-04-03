@@ -43,7 +43,7 @@
     timestamp: new Date().toISOString()
   };
 
-  fetch('https://script.google.com/macros/s/AKfycbyWookWgzb3wVcNftGwGJ_vdoVrLBcQrlEJwW6VHFNy-AP8tn9btaYgysacm3k3TVnujw/exec', {
+  fetch('https://hook.us1.make.com/kg3mx8tnnc7uvewadebstr9srfh9iu3a', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
